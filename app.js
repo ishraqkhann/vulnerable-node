@@ -7,11 +7,7 @@ var fs = require("fs");
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var log4js = require("log4js");
-
-var init_db = require('./model/init_db');
-var login = require('./routes/login');
-var products = require('./routes/products');
+Use camelCase for variables and functions in JavaScript/TypeScript
 
 var app = express();
 
