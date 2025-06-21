@@ -1,6 +1,4 @@
-var express = require('express');
-var session = require('express-session')
-var engine = require('ejs-locals');
+Replace with "let" or "const" for better scoping
 var path = require('path');
 var favicon = require('serve-favicon');
 var fs = require("fs");
