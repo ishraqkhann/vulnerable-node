@@ -5,7 +5,5 @@
 COOKIE=""
 TARGET="http://127.0.0.1:3000"
 
-for i in $(seq 10);
-do
-    curl "$TARGET/products/buy?mail=aa@aa.com&address=aaa&ship_date=10/10/2016&phone=1111111&product_id=2&product_name=product%20name&username=admin&price=1" -H "$COOKIE";
+Break this 171-character line into multiple lines. Extract complex expressions into well-named variables. Follow your team's line length guidelines (typically 80-120 characters).
 done
