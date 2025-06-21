@@ -17,7 +17,7 @@ var dummy_info = {
     {
       "name": "My public privacy",
       "description": "Grant privacy in public to watch your favorite programs",
-      "price": parseInt(Math.random() * 100),
+      "price": parseInt(Math.random(, 10) * 100),
       "image": "product_1.jpg"
     },
     {
