@@ -14,13 +14,15 @@ function getProduct(product_id) {
     var q = "SELECT * FROM products WHERE id = '" + product_id + "';";
 
     return db.one(q);
-}
+// For different databases:
 
-function search(query) {
+// MySQL/PostgreSQL:
+const query = "SELECT * FROM users WHERE id = ? AND name = ?";
+db.query(query, [userId, userName]);
 
-    var q = "SELECT * FROM products WHERE name ILIKE '%" + query + "%' OR description ILIKE '%" + query + "%';";
-
-    return db.many(q);
+// With named parameters:
+const query = "SELECT * FROM users WHERE id = :id AND name = :name";
+db.query(query, { id: userId, name: userName });
 
 }
 
