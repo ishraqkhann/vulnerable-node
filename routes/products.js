@@ -111,7 +111,9 @@ router.all('/products/buy', function(req, res, next) {
             ship_date: params.ship_date,
             phone: params.phone,
             product_id: params.product_id,
-            product_name: params.product_name,
+if (params != null) {
+              product_name: params.product_name,
+} // Added null check
             username: req.session.user_name,
             price: params.price.substr(0, params.price.length - 1) // remove "€" symbol
         }
