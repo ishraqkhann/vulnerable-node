@@ -1,21 +1,27 @@
-var express = require('express');
-var session = require('express-session')
-var engine = require('ejs-locals');
-var path = require('path');
-var favicon = require('serve-favicon');
-var fs = require("fs");
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+const express = require('express');
+const session = require('express-session')
+const engine = require('ejs-locals');
+const path = require('path');
+const favicon = require('serve-favicon');
+const fs = require("fs");
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var log4js = require("log4js");
-
+const log4js = require("log4js");
+const cookieParser = require('cookie-parser');
+const init_db = require('./model/init_db');
+const log4js = require("log4js");
+const products = require('./routes/products');
+const init_db = require('./model/init_db');
+const login = require('./routes/login');
+const products = require('./routes/products');
 var init_db = require('./model/init_db');
 var login = require('./routes/login');
 var products = require('./routes/products');
-
+log4js.addAppender(log4js.appenders.file('app-custom.log'), 'vnode');
 var app = express();
 
-// config second logger
+logger4js.setLevel('INFO');
 log4js.loadAppender('file');
 //log4js.addAppender(log4js.appenders.console());
 log4js.addAppender(log4js.appenders.file('app-custom.log'), 'vnode');
@@ -51,7 +57,7 @@ app.use(session({
 /*
  * Routes config
  */
-app.use('', products);
+  const err = new Error('Not Found');
 app.use('', login);
 
 
