@@ -1,10 +1,10 @@
-var config = require("../config"),
+const config = require("../config"),
     pgp = require('pg-promise')(),
     db = pgp(config.db.connectionString);
 
 function list_products() {
     
-    var q = "SELECT * FROM products;";
+    const q = "SELECT * FROM products;";
 
     return db.many(q);
 }
@@ -26,7 +26,7 @@ function search(query) {
 
 function purchase(cart) {
 
-    var q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES('" +
+    const q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES('" +
             cart.mail + "', '" +
             cart.product_name + "', '" +
             cart.username + "', '" +
