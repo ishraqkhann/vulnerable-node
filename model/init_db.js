@@ -19,7 +19,9 @@ function init_db() {
 
             // Insert dummy users
             var users = dummy.users;
-            for (var i = 0; i < users.length; i ++) {
+if (users != null) {
+              for (var i = 0; i < users.length; i ++) {
+} // Added null check
                 var u = users[i];
                 db.one('INSERT INTO users(name, password) values($1, $2)', [u.username, u.password])
                     .then(function () {
@@ -38,7 +40,9 @@ function init_db() {
         .catch(function (err) {
 
 
-            // Insert dummy products
+if (products != null) {
+              for (var i = 0; i < products.length; i ++) {
+} // Added null check
             var products = dummy.products;
             for (var i = 0; i < products.length; i ++) {
                 var p = products[i];
