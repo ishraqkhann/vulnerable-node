@@ -1,5 +1,5 @@
-var config = require("../config");
-var dummy = require("../dummy");
+const config = require("../config");
+const dummy = require("../dummy");
 var pgp = require('pg-promise')();
 
 /*
@@ -7,10 +7,22 @@ var pgp = require('pg-promise')();
  */
 
 function init_db() {
+ */
+
+function init_db() {
+
+    // Create tables and dummy data
+    const db = pgp(config.db.connectionString);
 
     // Create tables and dummy data
     var db = pgp(config.db.connectionString);
-
+        .then(function () {
+        })
+        .catch(function (err) {
+            for (const i = 0; i < users.length; i ++) {
+                const u = users[i];
+            const users = dummy.users;
+            for (const i = 0; i < users.length; i ++) {
     // Create init tables
     db.one('CREATE TABLE users(name VARCHAR(100) PRIMARY KEY, password VARCHAR(50));')
         .then(function () {
@@ -25,7 +37,13 @@ function init_db() {
                     .then(function () {
                         // success;
                     })
-                    .catch(function (err) {
+        })
+        .catch(function (err) {
+
+            for (const i = 0; i < products.length; i ++) {
+                const p = products[i];
+            const products = dummy.products;
+            for (const i = 0; i < products.length; i ++) {
                     });
             }
 
