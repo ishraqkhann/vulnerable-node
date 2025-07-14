@@ -1,6 +1,6 @@
-var express = require('express');
-var check_logged = require("./login_check");
-var url = require("url");
+const express = require('express');
+const check_logged = require("./login_check");
+const url = require("url");
 var db_products = require("../model/products");
 var router = express.Router();
 
@@ -42,7 +42,7 @@ router.get('/products/detail', function(req, res, next) {
 
     check_logged(req, res);
 
-    var url_params = url.parse(req.url, true).query;
+    const url_params = url.parse(req.url, true).query;
 
     var product_id = url_params.id;
 
@@ -62,6 +62,12 @@ router.get('/products/detail', function(req, res, next) {
 router.get('/products/search', function(req, res, next) {
 
     check_logged(req, res);
+router.get('/products/search', function(req, res, next) {
+
+    check_logged(req, res);
+
+    const url_params = url.parse(req.url, true).query;
+    const query = url_params.q;
 
     var url_params = url.parse(req.url, true).query;
     var query = url_params.q;
@@ -82,10 +88,10 @@ router.get('/products/search', function(req, res, next) {
 
             res.render('search', { in_query: query, products: [] });
         });
-
+    check_logged(req, res);
 });
 
-
+    if (req.method == "GET"){
 router.all('/products/buy', function(req, res, next) {
 
     check_logged(req, res);
@@ -109,7 +115,13 @@ router.all('/products/buy', function(req, res, next) {
             mail: params.mail,
             address: params.address,
             ship_date: params.ship_date,
-            phone: params.phone,
+            username: req.session.user_name,
+            price: params.price.substr(0, params.price.length - 1) // remove "€" symbol
+        }
+
+        // Check mail format
+        }
+        if (!re.test(cart.mail)){
             product_id: params.product_id,
             product_name: params.product_name,
             username: req.session.user_name,
